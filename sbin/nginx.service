@@ -1,0 +1,14 @@
+[Unit]
+Description=nginx - high performance web server
+Documentation=http://nginx.org/en/docs/
+ 
+[Service]
+Type=forking
+PIDFile=/home/marija_demenkova/nginx/logs/nginx.pid
+ExecStartPre=/home/marija_demenkova/nginx/sbin/nginx -t
+ExecStart=/home/marija_demenkova/nginx/sbin/nginx
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+ 
+[Install]
+WantedBy=multi-user.target
